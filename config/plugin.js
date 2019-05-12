@@ -14,7 +14,7 @@ exports.nunjucks = {
 };
 // 限制上传文件的大小
 exports.multipart = {
-  fileSize: '100mb'
+  fileSize: '1024mb'
 };
 // 开启socket.io
 exports.io = {

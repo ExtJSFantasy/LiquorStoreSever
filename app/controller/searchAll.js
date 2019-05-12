@@ -22,11 +22,68 @@ class SearchAllController extends Controller {
         console.log(err);
       });
   }
+  // 验证车型
+  async identifyHandwriting() {
+    const imgSrc = this.ctx.request.files[0].filepath;
+    await this.service.searchAll
+      .identifyHandwriting(imgSrc)
+      .then(result => {
+        // 删除临时文件,异步函数需要回调，不然node检测时会警告
+        fs.unlink(imgSrc, function(err) {
+          if (err) {
+            throw err;
+          }
+          console.log('文件:' + imgSrc + '删除成功！');
+        });
+        this.ctx.body = result;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
   // 验证logo
   async identifyLogos() {
     const imgSrc = this.ctx.request.files[0].filepath;
     await this.service.searchAll
       .identifyLogos(imgSrc)
+      .then(result => {
+        // 删除临时文件,异步函数需要回调，不然node检测时会警告
+        fs.unlink(imgSrc, function(err) {
+          if (err) {
+            throw err;
+          }
+          console.log('文件:' + imgSrc + '删除成功！');
+        });
+        this.ctx.body = result;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+  // 通用
+  async identifyAllType() {
+    const imgSrc = this.ctx.request.files[0].filepath;
+    await this.service.searchAll
+      .identifyAllType(imgSrc)
+      .then(result => {
+        // 删除临时文件,异步函数需要回调，不然node检测时会警告
+        fs.unlink(imgSrc, function(err) {
+          if (err) {
+            throw err;
+          }
+          console.log('文件:' + imgSrc + '删除成功！');
+        });
+        this.ctx.body = result;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+  // 菜品
+  async identifyDish() {
+    const imgSrc = this.ctx.request.files[0].filepath;
+    await this.service.searchAll
+      .identifyDish(imgSrc)
       .then(result => {
         // 删除临时文件,异步函数需要回调，不然node检测时会警告
         fs.unlink(imgSrc, function(err) {

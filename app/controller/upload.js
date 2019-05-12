@@ -36,7 +36,7 @@ class UploadController extends Controller {
     const filename = stream.filename;
     // 文件生成绝对路径
 
-    const uploadsPath = 'app/public/uploads/' + new Date().getFullYear() + (new Date().getMonth() + 1);
+    const uploadsPath = 'app/public/uploads/' + new Date().getFullYear() + (new Date().getMonth() + 1 < 10 ? '0'+(new Date().getMonth() + 1) : new Date().getMonth() + 1 );
 
     if (!fs.existsSync(uploadsPath)) {
       mkdirs.sync(uploadsPath);

@@ -33,4 +33,10 @@ module.exports = app => {
   router.post('/searchAll/v5/:name', controller.searchAll.identifyDrivingLicense);
   router.post('/searchAll/v6/:name', controller.searchAll.identifyVehicleLicense);
   router.post('/searchAll/v7/:name', controller.searchAll.identifyLicensePlate);
+  router.post('/searchAll/v8/:name', controller.searchAll.identifyBusinessLicense);
+  router.post('/searchAll/v9/:name', controller.searchAll.identifyAnimal);
+  router.post('/searchAll/v10/:name', controller.searchAll.identifyPlant);
+  router.post('/searchAll/v11/:name', controller.searchAll.identifyAllType);
+  router.post('/searchAll/v12/:name', controller.searchAll.identifyDish);
+  router.post('/searchAll/v13/:name', controller.searchAll.identifyHandwriting);
 };

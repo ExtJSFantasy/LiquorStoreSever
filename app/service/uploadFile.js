@@ -9,9 +9,10 @@ class UploadFileService extends Service {
   async upload() {
     const { ctx } = this;
     const files = ctx.request.files;
+	console.log(ctx.request);
     const fields = [];
     // ctx.logger.warn('files: %j', files);
-    const urlAddr = '/public/uploads/' + new Date().getFullYear() + (new Date().getMonth() + 1);
+    const urlAddr = '/public/uploads/' + new Date().getFullYear() + (new Date().getMonth() + 1 < 10 ? '0'+(new Date().getMonth() + 1) : new Date().getMonth() + 1 );
     const uploadsPath = this.config.initDir + urlAddr;
 
     if (!fs.existsSync(uploadsPath)) {
@@ -32,7 +33,13 @@ class UploadFileService extends Service {
         throw error;
       } finally {
         // delete tmp file，删除临时文件
-        await fs.unlink(file.filepath);
+        //await fs.unlink(file.filepath);
+		await fs.unlink(file.filepath, function(err) {
+          if (err) {
+            throw err;
+          }
+          console.log('文件:' + imgSrc + '删除成功！');
+        });
       }
     }
     return fields;

@@ -195,11 +195,24 @@ class SearchAllService extends Service {
       });
     return identityResult;
   }
-  // 驾驶证
+  // 行驶证
   async identifyVehicleLicense(imgSrc) {
     const image = fs.readFileSync(imgSrc).toString('base64');
     let identityResult = await clientText
       .vehicleLicense(image)
+      .then(function(result) {
+        return result;
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+    return identityResult;
+  }
+  // 手写文字
+  async identifyHandwriting(imgSrc) {
+    const image = fs.readFileSync(imgSrc).toString('base64');
+    let identityResult = await clientText
+      .handwriting(image)
       .then(function(result) {
         return result;
       })

@@ -5,7 +5,7 @@ module.exports = appInfo => {
   exports.cluster = {
     listen: {
       port: 7002,
-      hostname: '192.168.31.238'
+      //hostname: '127.0.0.1'
       // path: '/var/run/egg.sock',
     }
   };
@@ -15,7 +15,7 @@ module.exports = appInfo => {
   // add your config here
   config.middleware = [];
   // 只需要访问一个 MySQL 数据库实例
-  config.mysql = {
+  /* config.mysql = {
     // 单数据库信息配置
     client: {
       // host
@@ -33,8 +33,8 @@ module.exports = appInfo => {
     app: true,
     // 是否加载到 agent 上，默认关闭
     agent: false
-  };
-  config.mssql = {
+  }; */
+  /* config.mssql = {
     // Single Database
     client: {
       server: 'localhost\\XDS',
@@ -72,7 +72,7 @@ module.exports = appInfo => {
     //     },
     //   },
     // },
-  };
+  }; */
   config.view = {
     root: [path.join(appInfo.baseDir, 'app/view'), path.join(appInfo.baseDir, 'path/to/another')].join(','),
     defaultViewEngine: 'nunjucks',
@@ -90,6 +90,10 @@ module.exports = appInfo => {
   exports.xlsx = {
     app: true,
     agent: false
+  };
+  exports.bodyParser = {
+	  jsonLimit: '5mb',
+	  formLimit: '6mb'
   };
   // 配置
   config.io = {
